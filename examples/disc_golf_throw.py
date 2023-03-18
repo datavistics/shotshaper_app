@@ -6,6 +6,7 @@ Example showing a single disc throw.
 from shotshaper.projectile import DiscGolfDisc
 import matplotlib.pyplot as pl
 import numpy as np
+import plotly.express as px
 
 d = DiscGolfDisc('dd2')
 U = 24.2
@@ -23,13 +24,15 @@ shot = d.shoot(speed=U, omega=omega, pitch=pitch,
 pl.figure(1)
 x,y,z = shot.position
 pl.plot(x,y)
+fig = px.scatter(x,y)
+fig.show()
 
 pl.xlabel('Distance (m)')
 pl.ylabel('Drift (m)')
 pl.axis('equal')
 
 # Plot other parameters
-arc,alphas,lifts,drags,moms,rolls = d.post_process(shot, omega)
+arc,alphas,betas,lifts,drags,moms,rolls = d.post_process(shot, omega)
 fig, axes = pl.subplots(nrows=2, ncols=3, dpi=80,figsize=(13,5))
 
 axes[0,0].plot(arc, lifts)

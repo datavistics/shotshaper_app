@@ -50,6 +50,7 @@ shot = disc_dict.shoot(speed=U, omega=omega, pitch=pitch,
 
 # Plot trajectory
 x, y, z = shot.position
+x_new, y_new = -1 * y, x
 
 # fig = px.scatter(x,y,title='Drift over Distance')
 # fig.update_yaxes(
@@ -65,7 +66,7 @@ x, y, z = shot.position
 # plt.axis('equal')
 
 # Reversed x and y to mimic a throw
-fig = get_plot(y, x, z, reverse=True)
+fig = get_plot(x_new, y_new, z)
 st.plotly_chart(fig)
 
 arc, alphas, betas, lifts, drags, moms, rolls = disc_dict.post_process(shot, omega)

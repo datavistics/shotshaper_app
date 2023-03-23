@@ -69,6 +69,20 @@ x_new, y_new = -1 * y, x
 fig = get_plot(x_new, y_new, z)
 st.plotly_chart(fig)
 
+st.markdown(
+f"""
+Drift Left: {round(min(x_new), 2)}
+
+Drift Right: {round(max(x_new), 2)}
+
+Max Height: {round(max(z), 2)}
+
+Distance: {round(max(y_new), 2)}
+
+Points of interest: {x_new[1:-1][np.diff(np.diff(x_new)) < 0]}
+"""
+        )
+
 arc, alphas, betas, lifts, drags, moms, rolls = disc_dict.post_process(shot, omega)
 fig, axes = plt.subplots(nrows=2, ncols=3, dpi=80, figsize=(13, 5))
 

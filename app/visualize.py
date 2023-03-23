@@ -61,14 +61,14 @@ def get_plot(x, y, z):
 
     carats_v = go.Scatter(
             x=[category, category],
-            y=[zm, zM],
+            y=[min(z) - 1.5, max(z) + 1.5],
             mode='markers',
             showlegend=False,
             marker=dict(symbol=['triangle-up', 'triangle-down'], size=20, color=['red', 'red']),
             name='Carets',
             )
     carats_h = go.Scatter(
-            x=[xm + 1.5, xM - 1.5],
+            x=[min(x) - 0.6, max(x) + 0.6],
             y=['', ''],
             mode='markers',
             showlegend=False,
@@ -190,7 +190,7 @@ def get_plot(x, y, z):
     # Combine frames for the main plot and subplot
     fig.frames = all_frames
     fig.update_yaxes(scaleanchor="x", scaleratio=1, row=1, col=1)
-    fig.update_yaxes(range=[zm, zM], fixedrange=True, row=1, col=2)
+    fig.update_yaxes(range=[zm-2, zM+2], fixedrange=True, row=1, col=2)
     fig.update_xaxes(range=[xm_abs, xM_abs], fixedrange=True, row=2, col=2)
 
     # # Add green rectangle at the bottom of the plot

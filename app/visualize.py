@@ -61,18 +61,18 @@ def get_plot(x, y, z):
 
     carats_v = go.Scatter(
             x=[category, category],
-            y=[min(z) - 1.5, max(z) + 1.5],
+            y=[min(z), max(z)],
             mode='markers',
             showlegend=False,
-            marker=dict(symbol=['triangle-up', 'triangle-down'], size=20, color=['red', 'red']),
+            marker=dict(symbol=['arrow-up', 'arrow-down'], size=20, color=['red', 'red']),
             name='Carets',
             )
     carats_h = go.Scatter(
-            x=[min(x) - 0.6, max(x) + 0.6],
+            x=[min(x), max(x)],
             y=['', ''],
             mode='markers',
             showlegend=False,
-            marker=dict(symbol=['triangle-right', 'triangle-left'], size=20, color=['red', 'red']),
+            marker=dict(symbol=['arrow-right', 'arrow-left'], size=20, color=['red', 'red']),
             name='Carets',
             )
 
